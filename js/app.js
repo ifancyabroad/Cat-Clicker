@@ -1,6 +1,10 @@
 const catsDisplay = document.getElementById('cats-display');
-const catPicture = document.getElementById('cat-picture');
-const clickDisplay = document.getElementsById('clicks');
+let catData = [
+{name: 'Bob',
+image: 'images/cat.jpg'},
+{name: 'Henry',
+image: 'images/cat2.jpg'}
+];
 
 class Cat {
 	constructor(name, image) {
@@ -10,26 +14,32 @@ class Cat {
 		this.html = 
 		`<div class="cat">
 			<ul class="cat-details">
-				<li id="cat-name">${this.name}</li>
-				<li id="clicks">Clicks: 0</li>
+				<li class="cat-name">${this.name}</li>
+				<li class="clicks">Clicks: 0</li>
 			</ul>
-			<img src="${this.image}" alt="A picture of a cat" id="cat-picture">
+			<img src="${this.image}" alt="A picture of a cat" class="cat-picture">
 		</div>`
 	}
 	addClick() {
 		this.clicks++;
+		
 	}
 	addContent() {
 		catsDisplay.insertAdjacentHTML('beforeend', this.html);
 	}
 }
 
-const cat1 = new Cat('Bob', 'images/cat.jpg');
-const cat2 = new Cat('Henry', 'images/cat1.jpg');
+const createCats = function() {
+	catData.forEach(function(cat) {
+		let c = new Cat(cat.name, cat.image);
+		c.addContent();
+	});
+}();
 
-cat1.addContent();
-cat2.addContent();
+const catPicture = document.getElementsByClassName('cat-picture');
 
-catPicture.addEventListener('click', function(){
-	clickDisplay.innerHTML = 'Clicks: ' + clicks;
-}, false);
+for (let cat of catPicture) {
+	cat.addEventListener('click', function(e) {
+		console.log(e);
+	}, false);
+}
