@@ -1,9 +1,19 @@
 .cat-clicker {
+	font-family: 'Amatic SC', cursive;
 	margin: auto;
-	text-align: center;
 	width: 80%;
 	max-width: 675px;
 	min-width: 300px;
+}
+
+.headings {
+	display: flex;
+	align-items: center;
+}
+
+h1, h2 {
+	text-align: center;
+	width: 50%;
 }
 
 img {
