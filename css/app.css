@@ -12,6 +12,10 @@
 	justify-content: center;
 }
 
+h1 {
+	margin-bottom: 0;
+}
+
 #cats-display {
 	display: flex;
 	flex-wrap: wrap;
