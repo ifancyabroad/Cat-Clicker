@@ -9,11 +9,30 @@
 .headings {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
-h1, h2 {
-	text-align: center;
+.cats-display {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cat {
+	margin: 20px;
+}
+
+.cat-details {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	margin: 5px;
+	padding: 0;
+}
+
+li {
 	width: 50%;
+	text-align: center;
 }
 
 img {
