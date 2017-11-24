@@ -12,8 +12,9 @@
 	justify-content: center;
 }
 
-.cats-display {
+#cats-display {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
