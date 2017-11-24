@@ -1,7 +1,8 @@
 .cat-clicker {
 	margin: auto;
 	text-align: center;
-	width: 60%;
+	width: 80%;
+	max-width: 675px;
 	min-width: 300px;
 }
 
