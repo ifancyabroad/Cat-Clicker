@@ -46,10 +46,10 @@ const createCats = function() {
 	let id = 0;
 	catData.forEach(function(cat) {
 		let c = new Cat(id, cat.name, cat.image);
-		c.addContent();
 		catArray.push(c);
 		id++;
 	});
+	catArray[0].addContent();
 }();
 
 // Object containing all cat pictures on the page
