@@ -24,6 +24,8 @@ class Cat {
 	}
 	// Get HTML with updated click counter
 	updateHTML() {
+		const catsDisplay = document.getElementById('cats-display');
+		catsDisplay.innerHTML = '';
 		this.html =
 		`<div id="${this.id}" class="cat">
 			<ul class="cat-details">
@@ -31,7 +33,8 @@ class Cat {
 				<li class="clicks">Clicks: ${this.clicks}</li>
 			</ul>
 			<img src="${this.image}" alt="A picture of a cat" class="cat-picture">
-		</div>`	
+		</div>`;
+		catsDisplay.insertAdjacentHTML('beforeend', this.html);
 	}
 	// Method for incrementing clicks to the cat
 	addClick(display) {
@@ -51,10 +54,7 @@ class Cat {
 	}
 	// Method for adding cat content to the page
 	addContent() {
-		const catsDisplay = document.getElementById('cats-display');
-		catsDisplay.innerHTML = '';
 		this.updateHTML();
-		catsDisplay.insertAdjacentHTML('beforeend', this.html);
 		this.addEvent();
 	}
 }
