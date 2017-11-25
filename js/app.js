@@ -54,6 +54,7 @@
 			model.catArray.forEach(function(cat) {
 				view.updateMenu(cat.menuHTML);
 			});
+			view.addMenuListeners();
 		},
 		
 		// Update cat display
@@ -68,6 +69,16 @@
 			let thisCat;
 			model.catArray.forEach(function(cat) {
 				if (id == cat.id) {
+					thisCat = cat;
+				}
+			});
+			return thisCat;
+		},
+		
+		findName: function(elem) {
+			let name = elem.innerText;
+			model.catArray.forEach(function(cat) {
+				if (name == cat.name) {
 					thisCat = cat;
 				}
 			});
@@ -121,13 +132,9 @@
 		addMenuListeners: function() {
 			const catLinks = document.getElementsByClassName('cat-link');
 			for (let link of catLinks) {
-				link.addEventListener('click', function(e) {
-					let choice = e.target.innerText;
-					model.catArray.forEach(function(cat) {
-						if (choice == cat.name) {
-							getCat(cat);
-						}
-					});
+				link.addEventListener('click', function(e) {					
+					let cat = octopus.findName(e.target);
+					octopus.getCat(cat);
 				});
 			}
 		}
