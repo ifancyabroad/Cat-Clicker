@@ -1,5 +1,5 @@
 (function() {
-	
+	// Model section
 	const model = {		
 		// Array for all cat instances to be stored
 		catArray: [],
@@ -48,6 +48,7 @@
 		}
 	}
 	
+	// Octopus section (communicates between model and view)
 	const octopus = {		
 		// Update Menu items
 		getMenu: function() {
@@ -64,6 +65,7 @@
 			view.addImageListener();
 		},
 		
+		// Finds which cat was clicked based on ID
 		findCat: function(elem) {
 			let id = elem.parentElement.id;
 			let thisCat;
@@ -75,6 +77,7 @@
 			return thisCat;
 		},
 		
+		// Finds which menu item was clicked based on name
 		findName: function(elem) {
 			let name = elem.innerText;
 			model.catArray.forEach(function(cat) {
@@ -101,6 +104,7 @@
 		},
 	}
 
+	// View section
 	const view = {
 		// Add menu items to the page
 		updateMenu: function(cat) {
@@ -139,6 +143,7 @@
 			}
 		}
 	}
+	// Functions to run on first loading
 	octopus.createCats();
 	octopus.getMenu();
 	octopus.getCat(model.catArray[0]);
