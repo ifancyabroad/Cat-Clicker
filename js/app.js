@@ -49,7 +49,14 @@
 	}
 	
 	// Octopus section (communicates between model and view)
-	const octopus = {		
+	const octopus = {	
+		// Functions to run for first loading
+		init: function() {
+			this.createCats();
+			this.getMenu();
+			this.getCat(model.catArray[0]);
+		},
+	
 		// Update Menu items
 		getMenu: function() {
 			model.catArray.forEach(function(cat) {
@@ -143,8 +150,6 @@
 			}
 		}
 	}
-	// Functions to run on first loading
-	octopus.createCats();
-	octopus.getMenu();
-	octopus.getCat(model.catArray[0]);
+	// Make it go!
+	octopus.init();
 })();
