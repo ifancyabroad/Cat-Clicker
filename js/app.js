@@ -4,7 +4,15 @@ let catData = [
 {name: 'Bob',
 image: 'images/cat.jpg'},
 {name: 'Henry',
-image: 'images/cat2.jpg'}
+image: 'images/cat2.jpg'},
+{name: 'Jeffrey',
+image: 'images/cat3.jpg'},
+{name: 'Leroy',
+image: 'images/cat4.jpg'},
+{name: 'Whisky',
+image: 'images/cat5.jpg'},
+{name: 'Kate',
+image: 'images/cat6.jpg'}
 ];
 
 // Array for all cat instances to be stored
