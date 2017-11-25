@@ -36,6 +36,7 @@ class Cat {
 	// Method for adding cat content to the page
 	addContent() {
 		const catsDisplay = document.getElementById('cats-display');
+		catsDisplay.innerHTML = '';
 		catsDisplay.insertAdjacentHTML('beforeend', this.html);
 	}
 }
