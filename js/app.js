@@ -31,12 +31,7 @@
 				this.image = image;
 				this.clicks = 0;
 				this.html = '';		
-			}
-			// Update Menu items
-			updateMenu() {
-				const catList = document.getElementById('cat-list');
-				const menuHTML = `<li class="cat-link">${this.name}</li>`;
-				catList.insertAdjacentHTML('beforeend', menuHTML);
+				this.menuHTML = `<li class="cat-link">${this.name}</li>`;
 			}
 			
 			// Get HTML with updated click counter
@@ -77,21 +72,32 @@
 		}
 	}
 	
-	const octopus = {
+	const octopus = {		
+		// Update Menu items
+		getMenu: function() {
+			model.catArray.forEach(function(cat) {
+				view.updateMenu(cat.menuHTML);
+			});
+		},
+		
 		// Function for creating all cats in the catData array
 		createCats: function() {
 			let id = 0;
 			model.catData.forEach(function(cat) {
 				let c = new model.Cat(id, cat.name, cat.image);
 				model.catArray.push(c);
-				c.updateMenu();
 				id++;
 			});
 			model.catArray[0].addContent();
-		}()
+		}(),
 	}
 
 	const view = {
+		updateMenu: function(cat) {
+			const catList = document.getElementById('cat-list');
+			catList.insertAdjacentHTML('beforeend', cat);
+		},
+		
 		// Add event listener to all menu items
 		addListeners: function() {
 			const catLinks = document.getElementsByClassName('cat-link');
@@ -107,4 +113,5 @@
 			}
 		}()
 	}
+	octopus.getMenu();
 })();
