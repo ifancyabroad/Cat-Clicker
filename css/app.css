@@ -12,7 +12,7 @@ h1 {
 	margin-bottom: 0;
 }
 
-#menu {
+.menu {
 	text-align: center;
 	position: fixed;
 	float: left;
@@ -22,7 +22,7 @@ h1 {
 	border-radius: 8px;
 }
 
-.cat-list {
+#cat-list {
 	list-style-type: none;
 	margin: 20px;
 	padding: 0;

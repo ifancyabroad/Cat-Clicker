@@ -23,7 +23,9 @@ class Cat {
 	}
 	// Update Menu items
 	updateMenu() {
-		
+		const catList = document.getElementById('cat-list');
+		const menuHTML = `<li class="cat-link">${this.name}</li>`;
+		catList.insertAdjacentHTML('beforeend', menuHTML);
 	}
 	
 	// Get HTML with updated click counter
@@ -69,6 +71,7 @@ const createCats = function() {
 	catData.forEach(function(cat) {
 		let c = new Cat(id, cat.name, cat.image);
 		catArray.push(c);
+		c.updateMenu();
 		id++;
 	});
 	catArray[0].addContent();
