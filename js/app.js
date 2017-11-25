@@ -23,7 +23,7 @@ class Cat {
 		`<div id="${this.id}" class="cat">
 			<ul class="cat-details">
 				<li class="cat-name">${this.name}</li>
-				<li class="clicks">Clicks: 0</li>
+				<li class="clicks">Clicks: ${this.clicks}</li>
 			</ul>
 			<img src="${this.image}" alt="A picture of a cat" class="cat-picture">
 		</div>`
@@ -51,6 +51,9 @@ const createCats = function() {
 	});
 	catArray[0].addContent();
 }();
+
+// Object containing all links to cats
+const catMenu = document.getElementsByClassName('cat-link');
 
 // Object containing all cat pictures on the page
 const catPicture = document.getElementsByClassName('cat-picture');
