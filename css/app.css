@@ -13,6 +13,7 @@ h1 {
 }
 
 #menu {
+	text-align: center;
 	position: fixed;
 	float: left;
 	background-color: #FFF2EC;

@@ -19,9 +19,13 @@ class Cat {
 		this.name = name;
 		this.image = image;
 		this.clicks = 0;
-		this.html = '';
+		this.html = '';		
+	}
+	// Update Menu items
+	updateMenu() {
 		
 	}
+	
 	// Get HTML with updated click counter
 	updateHTML() {
 		const catsDisplay = document.getElementById('cats-display');
@@ -73,9 +77,7 @@ const createCats = function() {
 // Object containing all links to cats
 const catLinks = document.getElementsByClassName('cat-link');
 
-// Object containing all cat pictures on the page
-const catPicture = document.getElementsByClassName('cat-picture');
-
+// Add event listener to all menu items
 for (let link of catLinks) {
 	link.addEventListener('click', function(e) {
 		let choice = e.target.innerText;
