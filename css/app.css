@@ -1,9 +1,5 @@
 .cat-clicker {
 	font-family: 'Indie FLower', cursive;
-	margin: auto;
-	width: 80%;
-	max-width: 675px;
-	min-width: 300px;
 }
 
 .headings {
@@ -16,11 +12,35 @@ h1 {
 	margin-bottom: 0;
 }
 
+#menu {
+	position: fixed;
+	float: left;
+	background-color: #FFF2EC;
+	margin: 20px;
+	border: 4px solid #FF8040;
+	border-radius: 8px;
+}
+
+.cat-list {
+	list-style-type: none;
+	margin: 20px;
+	padding: 0;
+}
+
+.cat-list li {
+	margin: auto;
+	width: 100%;
+}
+
 #cats-display {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	margin: auto;
+	width: 80%;
+	max-width: 675px;
+	min-width: 300px;
 }
 
 .cat {
