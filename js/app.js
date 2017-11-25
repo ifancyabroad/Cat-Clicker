@@ -53,10 +53,21 @@ const createCats = function() {
 }();
 
 // Object containing all links to cats
-const catMenu = document.getElementsByClassName('cat-link');
+const catLinks = document.getElementsByClassName('cat-link');
 
 // Object containing all cat pictures on the page
 const catPicture = document.getElementsByClassName('cat-picture');
+
+for (let link of catLinks) {
+	link.addEventListener('click', function(e) {
+		let choice = e.target.innerText;
+		catArray.forEach(function(cat) {
+			if (choice == cat.name) {
+				cat.addContent();
+			}
+		});
+	});
+}
 
 // Adds an event listener to each picture
 for (let cat of catPicture) {
