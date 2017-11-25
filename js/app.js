@@ -36,8 +36,6 @@
 			
 			// Get HTML with updated click counter
 			updateHTML() {
-				const catsDisplay = document.getElementById('cats-display');
-				catsDisplay.innerHTML = '';
 				this.html =
 				`<div id="${this.id}" class="cat">
 					<ul class="cat-details">
@@ -46,29 +44,7 @@
 					</ul>
 					<img src="${this.image}" alt="A picture of a cat" class="cat-picture">
 				</div>`;
-				catsDisplay.insertAdjacentHTML('beforeend', this.html);
-			}
-			// Method for incrementing clicks to the cat
-			addClick(display) {
-				this.clicks++;
-				display.innerHTML = 'Clicks: ' + this.clicks;
 			}	
-			// Add event listener
-			addEvent() {
-				let cat = this;
-				// Object containing all cat pictures on the page
-				const catPicture = document.getElementsByClassName('cat-picture');
-				catPicture[0].addEventListener('click', function(e) {
-					// Find out which cat instance has been selected
-					let counter = e.target.previousElementSibling.lastElementChild;
-					cat.addClick(counter);
-				}, false);
-			}
-			// Method for adding cat content to the page
-			addContent() {
-				this.updateHTML();
-				this.addEvent();
-			}
 		}
 	}
 	
@@ -80,6 +56,29 @@
 			});
 		},
 		
+		// Update cat display
+		getCat: function(cat) {
+			cat.updateHTML();
+			view.updateDisplay(cat.html);
+			view.addImageListener();
+		},
+		
+		findCat: function(elem) {
+			let id = elem.parentElement.id;
+			let thisCat;
+			model.catArray.forEach(function(cat) {
+				if (id == cat.id) {
+					thisCat = cat;
+				}
+			});
+			return thisCat;
+		},
+		
+		// Method for incrementing clicks to the cat
+		addClick: function(cat) {
+			cat.clicks++;
+		},
+		
 		// Function for creating all cats in the catData array
 		createCats: function() {
 			let id = 0;
@@ -88,30 +87,52 @@
 				model.catArray.push(c);
 				id++;
 			});
-			model.catArray[0].addContent();
-		}(),
+		},
 	}
 
 	const view = {
+		// Add menu items to the page
 		updateMenu: function(cat) {
 			const catList = document.getElementById('cat-list');
 			catList.insertAdjacentHTML('beforeend', cat);
 		},
 		
+		// Add cat display to the page
+		updateDisplay: function(cat) {
+			const catsDisplay = document.getElementById('cats-display');
+			catsDisplay.innerHTML = '';
+			catsDisplay.insertAdjacentHTML('beforeend', cat);
+		},
+		
+		// Add listener to the cat picture
+		addImageListener: function() {
+			// Object containing all cat pictures on the page
+			const catPicture = document.getElementsByClassName('cat-picture')[0];
+			catPicture.addEventListener('click', function(e) {
+				// Find out which cat instance has been selected
+				let cat = octopus.findCat(e.target);
+				let counter = e.target.previousElementSibling.lastElementChild;
+				octopus.addClick(cat);
+				counter.innerHTML = 'Clicks: ' + cat.clicks;
+			}, false);
+		},
+		
 		// Add event listener to all menu items
-		addListeners: function() {
+		addMenuListeners: function() {
 			const catLinks = document.getElementsByClassName('cat-link');
 			for (let link of catLinks) {
 				link.addEventListener('click', function(e) {
 					let choice = e.target.innerText;
 					model.catArray.forEach(function(cat) {
 						if (choice == cat.name) {
-							cat.addContent();
+							getCat(cat);
 						}
 					});
 				});
 			}
-		}()
+		}
 	}
+	octopus.createCats();
 	octopus.getMenu();
+	octopus.getCat(model.catArray[0]);
 })();
