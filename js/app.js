@@ -32,11 +32,22 @@ class Cat {
 			</ul>
 			<img src="${this.image}" alt="A picture of a cat" class="cat-picture">
 		</div>`	
-	}	
+	}
 	// Method for incrementing clicks to the cat
 	addClick(display) {
 		this.clicks++;
 		display.innerHTML = 'Clicks: ' + this.clicks;
+	}	
+	// Add event listener
+	addEvent() {
+		let cat = this;
+		// Object containing all cat pictures on the page
+		const catPicture = document.getElementsByClassName('cat-picture');
+		catPicture[0].addEventListener('click', function(e) {
+			// Find out which cat instance has been selected
+			let counter = e.target.previousElementSibling.lastElementChild;
+			cat.addClick(counter);
+		}, false);
 	}
 	// Method for adding cat content to the page
 	addContent() {
@@ -44,6 +55,7 @@ class Cat {
 		catsDisplay.innerHTML = '';
 		this.updateHTML();
 		catsDisplay.insertAdjacentHTML('beforeend', this.html);
+		this.addEvent();
 	}
 }
 
@@ -73,19 +85,4 @@ for (let link of catLinks) {
 			}
 		});
 	});
-}
-
-// Adds an event listener to each picture
-for (let cat of catPicture) {
-	cat.addEventListener('click', function(e) {
-		// Find out which cat instance has been selected
-		let choice = e.target.parentElement.id;
-		let counter = e.target.previousElementSibling.lastElementChild;
-		catArray.forEach(function(cat) {
-			// Increment the relevant cat counter
-			if (choice == cat.id) {
-				cat.addClick(counter);
-			}
-		});
-	}, false);
 }
