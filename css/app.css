@@ -1,3 +1,7 @@
+body {
+	background-color: #FFFFD2;
+}
+
 .cat-clicker {
 	font-family: 'Indie FLower', cursive;
 }
@@ -39,6 +43,7 @@ h1 {
 
 .cat-link:hover {
 	cursor: pointer;
+	color: #FF8040;
 }
 
 #cats-display {
