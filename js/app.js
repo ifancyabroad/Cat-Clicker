@@ -31,7 +31,12 @@
 				this.image = image;
 				this.clicks = 0;
 				this.html = '';		
-				this.menuHTML = `<li class="cat-link">${this.name}</li>`;
+				this.menuHTML = '';
+			}
+			
+			// Get updated menu HTML
+			updateMenuHTML() {
+				this.menuHTML = `<li class="cat-link">${this.name}</li>`
 			}
 			
 			// Get HTML with updated click counter
@@ -59,7 +64,9 @@
 	
 		// Update Menu items
 		getMenu: function() {
+			view.clearMenu();
 			model.catArray.forEach(function(cat) {
+				cat.updateMenuHTML();
 				view.updateMenu(cat.menuHTML);
 			});
 			view.addMenuListeners();
@@ -104,6 +111,7 @@
 		changeName: function(cat, name) {
 			cat.name = name;
 			this.getMenu();
+			this.getCat(cat);
 		},
 		
 		// Change cats URL
@@ -131,6 +139,12 @@
 
 	// View section
 	const view = {
+		// Clear the menu
+		clearMenu: function() {
+			const catList = document.getElementById('cat-list');
+			catList.innerHTML = '';
+		},
+		
 		// Add menu items to the page
 		updateMenu: function(cat) {
 			const catList = document.getElementById('cat-list');
@@ -178,6 +192,27 @@
 					adminForm.style.display = "block";
 				} else {
 					adminForm.style.display = "none";
+				}
+			}, false);
+		}(),
+		
+		// Add event listener for submitting the admin form
+		addFormListener: function() {
+			const adminForm = document.getElementById('admin');
+			adminForm.addEventListener("submit", function(e) {
+				e.preventDefault();
+				let cat = octopus.findCat(e.target.previousElementSibling.firstElementChild.firstElementChild);
+				let name = document.getElementById('cat-name').value;
+				let url = document.getElementById('cat-url').value;
+				let clicks = document.getElementById('clicks').value;
+				if (name) {
+					octopus.changeName(cat, name);
+				}
+				if (url) {
+					octopus.changeURL(cat, url);
+				}
+				if (clicks) {
+					octopus.changeClicks(cat, clicks);
 				}
 			}, false);
 		}()
