@@ -196,6 +196,14 @@
 			}, false);
 		}(),
 		
+		// Add event listener for cancelling admin form
+		addFormListener: function() {
+			const adminForm = document.getElementById('admin');
+			adminForm.addEventListener("reset", function() {
+				adminForm.style.display = "none";
+			}, false);
+		}(),
+		
 		// Add event listener for submitting the admin form
 		addFormListener: function() {
 			const adminForm = document.getElementById('admin');
@@ -214,6 +222,7 @@
 				if (clicks) {
 					octopus.changeClicks(cat, clicks);
 				}
+				adminForm.style.display = "none";
 			}, false);
 		}()
 	}
