@@ -148,7 +148,20 @@
 					octopus.getCat(cat);
 				});
 			}
-		}
+		},
+		
+		addAdminListener: function() {
+			const adminBtn = document.getElementById('admin-btn');
+			const adminForm = document.getElementById('admin');
+			adminBtn.addEventListener('click', function() {
+				// Show or hide the admin form
+				if (adminForm.style.display === "none") {
+					adminForm.style.display = "block";
+				} else {
+					adminForm.style.display = "none";
+				}
+			}, false);
+		}()
 	}
 	// Make it go!
 	octopus.init();
