@@ -100,6 +100,24 @@
 			cat.clicks++;
 		},
 		
+		// Change cats name
+		changeName: function(cat, name) {
+			cat.name = name;
+			this.getMenu();
+		},
+		
+		// Change cats URL
+		changeURL: function(cat, url) {
+			cat.image = url;
+			this.getCat(cat);
+		},
+		
+		// Change cats clicks
+		changeClicks: function(cat, clicks) {
+			cat.clicks = clicks;
+			this.getCat(cat);
+		},
+		
 		// Function for creating all cats in the catData array
 		createCats: function() {
 			let id = 0;
@@ -150,6 +168,7 @@
 			}
 		},
 		
+		// Add event listener for admin button
 		addAdminListener: function() {
 			const adminBtn = document.getElementById('admin-btn');
 			const adminForm = document.getElementById('admin');
