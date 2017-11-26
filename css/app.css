@@ -13,11 +13,11 @@ body {
 }
 
 h1 {
-	margin: 10px;
+	margin: 20px 10px 0;
 }
 
 button[type=button] {
-	margin: 10px;
+	margin: 20px 10px 0;
 }
 
 .game-area {
